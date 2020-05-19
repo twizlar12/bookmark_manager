@@ -7,7 +7,7 @@ describe BookMarks do
 
   describe "#list" do
     it "should return a list of bookmarks" do
-      bookmarks = Bookmarks.all
+      bookmarks = BookMarks.all
 
       expect(bookmarks).to include("http://www.makersacademy.com")
       expect(bookmarks).to include("http://www.destroyallsoftware.com")

@@ -1,11 +1,9 @@
-class BookMarks
-  attr_accessor :list
+require 'pg'
 
+class BookMarks
   def self.all
-    [
-      "http://www.makersacademy.com",
-      "http://www.destroyallsoftware.com",
-      "http://www.google.com"
-     ]
+    connection = PG.connect(dbname: 'bookmark_manager')
+    result = connection.exec("SELECT * FROM bookmarks;")
+    result.map {|bookmark| bookmark['url']}
   end 
 end 
