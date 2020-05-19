@@ -7,8 +7,11 @@ describe BookMarks do
 
   describe "#list" do
     it "should return a list of bookmarks" do
-      subject.list << "hello"
-      expect(subject.list).to eq ["hello"]
+      bookmarks = Bookmarks.all
+
+      expect(bookmarks).to include("http://www.makersacademy.com")
+      expect(bookmarks).to include("http://www.destroyallsoftware.com")
+      expect(bookmarks).to include("http://www.google.com")
     end
   end
 end

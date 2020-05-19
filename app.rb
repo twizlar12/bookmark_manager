@@ -1,14 +1,14 @@
 require 'sinatra/base'
+require './lib/bookmarks'
 
 class BookmarkManager < Sinatra::Base
   get '/' do
     erb :index
   end
 
-  get '/bookmark' do
-    @bookmark = BookMarks.new
-    @bookmark.list << "hello"
-    erb :bookmarks
+  get '/bookmarks' do
+    @bookmarks = BookMarks.all
+    erb :'bookmarks/index'
   end
 
   run! if app_file == $0
