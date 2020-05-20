@@ -19,4 +19,16 @@ describe BookMarks do
       expect(bookmarks).to include("http://www.google.com")
     end
   end
+
+
+  describe "#add" do
+    it "should add a new bookmark" do
+      connection = PG.connect(dbname: 'bookmark_manager_test')
+
+      BookMarks.add(url: 'http://www.BBCSports.com')
+
+      bookmarks = BookMarks.all
+      expect(bookmarks).to include('http://www.BBCSports.com')
+    end
+  end
 end
