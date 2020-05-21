@@ -7,11 +7,10 @@ describe BookMarks do
 
   describe "#list" do
     it "should return a list of bookmarks" do
-      connection = PG.connect(dbname: 'bookmark_manager_test')
 
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.makersacademy.com');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.destroyallsoftware.com');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.google.com');")
+      BookMarks.add(url: 'http://www.makersacademy.com')
+      BookMarks.add(url: 'http://www.destroyallsoftware.com')
+      BookMarks.add(url: 'http://www.google.com')
 
       bookmarks = BookMarks.all
       expect(bookmarks).to include("http://www.makersacademy.com")
@@ -22,7 +21,6 @@ describe BookMarks do
 
   describe "#add" do
     it "should add a new bookmark" do
-      connection = PG.connect(dbname: 'bookmark_manager_test')
 
       BookMarks.add(url: 'http://www.BBCSports.com')
 
