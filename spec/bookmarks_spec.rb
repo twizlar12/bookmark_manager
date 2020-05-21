@@ -20,7 +20,6 @@ describe BookMarks do
     end
   end
 
-
   describe "#add" do
     it "should add a new bookmark" do
       connection = PG.connect(dbname: 'bookmark_manager_test')
