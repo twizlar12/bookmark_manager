@@ -5,6 +5,7 @@ feature 'Adding a new bookmark' do
 
     visit('/bookmarks/new')
     fill_in('url', with: 'http://testbookmark.com')
+    fill_in('title', with: 'Test')
     click_button('Add')
 
     expect(page).to have_content 'http://testbookmark.com'

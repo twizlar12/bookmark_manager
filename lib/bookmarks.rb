@@ -11,12 +11,12 @@ class BookMarks
     result.map {|bookmark| bookmark['url']}
   end 
 
-  def self.add(url:)
+  def self.add(url:, title:)
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test')
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
-    connection.exec("INSERT INTO bookmarks (url) VALUES('#{url}')")
+    connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}') returning id, url, title")
   end
 end 
